@@ -1,0 +1,33 @@
+# Miniconda v4.2
+
+FROM alpine:3.5
+
+ENV CONDA_VERSION=4.2.12 \
+    GLIBC_VERSION=2.23-r1 \
+    PATH=/opt/conda/bin:$PATH \
+    LANG=C.UTF-8
+
+RUN apk --no-cache add --virtual build-deps bash curl libgcc \
+
+    # Install GNU libc
+    && GLIBC_DL_URL="https://github.com/andyshinn/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}" \
+    && curl --location --silent --show-error -O ${GLIBC_DL_URL}/glibc-${GLIBC_VERSION}.apk \
+    && curl --location --silent --show-error -O ${GLIBC_DL_URL}/glibc-bin-${GLIBC_VERSION}.apk \
+    && curl --location --silent --show-error -O ${GLIBC_DL_URL}/glibc-i18n-${GLIBC_VERSION}.apk \
+    && apk add --allow-untrusted glibc-${GLIBC_VERSION}.apk \
+       glibc-bin-${GLIBC_VERSION}.apk glibc-i18n-${GLIBC_VERSION}.apk \
+    && /usr/glibc-compat/sbin/ldconfig /lib /usr/glibc-compat/lib \
+    && /usr/glibc-compat/bin/localedef -i en_US -f UTF-8 en_US.UTF-8 \
+
+    # Install Miniconda
+    && mkdir -p /opt/conda \
+    && curl https://repo.continuum.io/miniconda/Miniconda3-${CONDA_VERSION}-Linux-x86_64.sh -o miniconda.sh \
+    && bash miniconda.sh -f -b -p /opt/conda \
+
+    # Clean up
+    && find / -type d -name tests -depth -exec rm -rf {} \; \
+    && find / -type d -name test -depth -exec rm -rf {} \; \
+    && find / -type d -name \__pycache__ -depth -exec rm -rf {} \; \
+    && find / -type d -name '*.egg-info' -depth -exec rm -rf {} \; \
+    && apk del --purge -r build-deps glibc-i18n \
+    && rm -f glibc-*.apk miniconda.sh
