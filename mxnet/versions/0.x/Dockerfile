@@ -1,7 +1,7 @@
 # MXNet v0.8
 #
 # docker run --rm -it pottava/mxnet:0.8
-# docker run --rm pottava/mxnet:0.8 python -c 'import mxnet; print(mxnet.VERSION)'
+# docker run --rm pottava/mxnet:0.8 python -c 'import mxnet; print(mxnet.__version__)'
 
 FROM ubuntu:14.04
 
