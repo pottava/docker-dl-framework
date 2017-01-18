@@ -7,9 +7,8 @@ FROM pottava/mxnet:0.8
 
 ENV JUPYTER_VERSION=1.0.0
 
-RUN BUILD_PACKAGES="build-essential python-pip python-dev" \
-    && apt-get update -y && apt-get autoremove -y \
-    && apt-get install -y $BUILD_PACKAGES \
+RUN apt-get update -y && apt-get autoremove -y \
+    && apt-get install -y build-essential python-pip python-dev git curl wget \
 
     # Install Jupyter
     && pip install "jupyter == ${JUPYTER_VERSION}" \
