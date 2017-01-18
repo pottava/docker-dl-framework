@@ -1,30 +1,44 @@
 # MXNet v0.8
 #
 # docker run --rm -it pottava/mxnet:0.8
-# docker run --rm pottava/mxnet:0.8 -c 'import mxnet; print(mxnet.__version__)'
+# docker run --rm pottava/mxnet:0.8 python -c 'import mxnet; print(mxnet.VERSION)'
 
-FROM pottava/scipy:0.18
+FROM ubuntu:14.04
 
 ENV MXNET_VERSION=v0.8.0 \
-    OPENCV_REPO="http://dl-cdn.alpinelinux.org/alpine/edge/testing"
+    PYTHONPATH=/mxnet/python \
+    S6_VERSION=v1.18.1.5 \
+    S6_LOGGING=1
 
-RUN apk --no-cache add --repository $OPENCV_REPO opencv \
-    && apk --no-cache add --repository $OPENCV_REPO opencv-dev \
-    && apk --no-cache add --virtual build-deps \
-        openblas-dev python3-dev g++ git make \
+RUN BUILD_PACKAGES="build-essential git curl" \
+    && apt-get update -y && apt-get autoremove -y \
+    && apt-get install -y $BUILD_PACKAGES \
+
+    # Install s6-overlay to execute initialization scripts
+    && S6_DL=https://github.com/just-containers/s6-overlay/releases/download \
+    && S6_TAR=s6-overlay-amd64.tar.gz \
+    && curl --location --silent --show-error -O ${S6_DL}/${S6_VERSION}/${S6_TAR} \
+    && tar xzf ${S6_TAR} -C / \
+    && echo '#!/usr/bin/execlineb -P' > /etc/cont-init.d/01-link-devnull \
+    && echo 'ln /dev/null /dev/raw1394' >> /etc/cont-init.d/01-link-devnull \
+
+    # Install necessary packages
+    && apt-get install -y python-numpy libopenblas-dev libopencv-dev \
 
     # Install MXNet Core without CUDA
     && git clone --branch ${MXNET_VERSION} --depth 1 --recursive \
         https://github.com/dmlc/mxnet/ \
     && cd mxnet \
     && cp make/config.mk . \
-    && echo "USE_BLAS=openblas" >>config.mk \
+    && echo "USE_BLAS=openblas" >> config.mk \
     && make -j$(nproc) \
 
-    # Install MXNet Python package
-    && cd python \
-    && python setup.py install \
+    # Clean up
+    && find / -depth -type d -name tests -exec rm -rf {} \; \
+    && find / -depth -type d -name test -exec rm -rf {} \; \
+    && find / -depth -type d -name \__pycache__ -exec rm -rf {} \; \
+    && apt-get remove --purge -y $BUILD_PACKAGES \
+    && rm -rf /var/lib/apt/lists/* ${S6_TAR}
 
-    && apk del --purge -r build-deps \
-    && apk del --purge -r opencv-dev \
-    && rm -r /root/.cache
+ENTRYPOINT ["/init"]
+CMD ["python"]
