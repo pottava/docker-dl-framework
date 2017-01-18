@@ -8,7 +8,8 @@ FROM pottava/mxnet:0.8
 ENV JUPYTER_VERSION=1.0.0
 
 RUN apt-get update -y && apt-get autoremove -y \
-    && apt-get install -y build-essential python-pip python-dev git curl wget \
+    && apt-get install -y build-essential git curl wget \
+        python-pip python-dev graphviz \
 
     # Install Jupyter
     && pip install "jupyter == ${JUPYTER_VERSION}" \
@@ -20,7 +21,6 @@ RUN apt-get update -y && apt-get autoremove -y \
     && find / -depth -type d -name tests -exec rm -rf {} \; \
     && find / -depth -type d -name test -exec rm -rf {} \; \
     && find / -depth -type d -name \__pycache__ -exec rm -rf {} \; \
-    && apt-get remove --purge -y $BUILD_PACKAGES \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/notebook
