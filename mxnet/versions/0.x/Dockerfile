@@ -23,7 +23,7 @@ RUN BUILD_PACKAGES="build-essential git curl" \
     && echo 'ln /dev/null /dev/raw1394' >> /etc/cont-init.d/01-link-devnull \
 
     # Install necessary packages
-    && apt-get install -y python-numpy libopenblas-dev libopencv-dev \
+    && apt-get install -y libopenblas-dev libopencv-dev python-opencv python-numpy \
 
     # Install MXNet Core without CUDA
     && git clone --branch ${MXNET_VERSION} --depth 1 --recursive \

@@ -13,6 +13,9 @@ RUN apt-get update -y && apt-get autoremove -y \
     # Install Jupyter
     && pip install "jupyter == ${JUPYTER_VERSION}" \
 
+    # Minimum requirements @see http://mxnet.io/get_started/setup.html
+    && pip install graphviz \
+
     # Clean up
     && find / -depth -type d -name tests -exec rm -rf {} \; \
     && find / -depth -type d -name test -exec rm -rf {} \; \
