@@ -1,9 +1,9 @@
-# MXNet v0.8 with Jupyter notebook
+# MXNet v0.9 with Jupyter notebook
 #
-# docker run --rm -it pottava/mxnet:0.8-notebook ipython
-# docker run --rm -it -p 80:8888 pottava/mxnet:0.8-notebook
+# docker run --rm -it pottava/mxnet:0.9-notebook ipython
+# docker run --rm -it -p 80:8888 pottava/mxnet:0.9-notebook
 
-FROM pottava/mxnet:0.8
+FROM pottava/mxnet:0.9
 
 ENV JUPYTER_VERSION=1.0.0
 

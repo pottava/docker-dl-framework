@@ -13,9 +13,10 @@ https://hub.docker.com/r/pottava/mxnet/tags/
 
 ### Supported tags and respective `Dockerfile` links
 
-・latest ([mxnet/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.x/Dockerfile))  
-・0.8 ([mxnet/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.x/Dockerfile))  
-・0.8-notebook ([mxnet/jupyter/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/mxnet/tensorflow/jupyter/versions/1.0/Dockerfile))  
+・latest ([mxnet/versions/0.9/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.9/Dockerfile))  
+・0.9 ([mxnet/versions/0.9/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.9/Dockerfile))  
+・0.9-notebook ([mxnet/jupyter/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/jupyter/versions/1.0/Dockerfile))  
+・0.8 ([mxnet/versions/0.8/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.8/Dockerfile))  
 
 ### Usage
 
@@ -35,7 +36,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 With iPython:
 
 ```
-$ docker run --rm -it pottava/mxnet:0.8-notebook ipython
+$ docker run --rm -it pottava/mxnet:0.9-notebook ipython
 ```
 
 With Jupyter notebook:
