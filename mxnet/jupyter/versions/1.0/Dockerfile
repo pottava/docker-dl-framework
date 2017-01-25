@@ -9,7 +9,11 @@ ENV JUPYTER_VERSION=1.0.0
 
 RUN apt-get update -y && apt-get autoremove -y \
     && apt-get install -y build-essential git curl wget \
-        python-pip python-dev graphviz \
+        python-dev graphviz \
+
+    # Install pip
+    && curl --location --silent --show-error \
+        https://bootstrap.pypa.io/get-pip.py | python \
 
     # Install Jupyter
     && pip install "jupyter == ${JUPYTER_VERSION}" \
