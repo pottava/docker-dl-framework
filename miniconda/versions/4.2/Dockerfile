@@ -25,9 +25,9 @@ RUN apk --no-cache add --virtual build-deps bash curl libgcc \
     && bash miniconda.sh -f -b -p /opt/conda \
 
     # Clean up
-    && find / -type d -name tests -depth -exec rm -rf {} \; \
-    && find / -type d -name test -depth -exec rm -rf {} \; \
-    && find / -type d -name \__pycache__ -depth -exec rm -rf {} \; \
-    && find / -type d -name '*.egg-info' -depth -exec rm -rf {} \; \
+    && find / -depth -type d -name tests -exec rm -rf {} \; \
+    && find / -depth -type d -name test -exec rm -rf {} \; \
+    && find / -depth -type d -name \__pycache__ -exec rm -rf {} \; \
+    && find / -depth -type d -name '*.egg-info' -exec rm -rf {} \; \
     && apk del --purge -r build-deps glibc-i18n \
-    && rm -f glibc-*.apk miniconda.sh
+    && rm -f glibc-*.apk miniconda.sh /opt/conda/pkgs/cache

@@ -13,9 +13,9 @@ RUN apk --no-cache add libstdc++ \
     && pip install --ignore-installed --upgrade "tensorflow == ${TENSORFLOW_VERSION}" \
 
     # Clean up
-    && find / -type d -name tests -depth -exec rm -rf {} \; \
-    && find / -type d -name test -depth -exec rm -rf {} \; \
-    && find / -type d -name \__pycache__ -depth -exec rm -rf {} \; \
+    && find / -depth -type d -name tests -exec rm -rf {} \; \
+    && find / -depth -type d -name test -exec rm -rf {} \; \
+    && find / -depth -type d -name \__pycache__ -exec rm -rf {} \; \
     && rm -rf /root/.cache
 
 ENTRYPOINT ["python"]

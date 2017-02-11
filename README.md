@@ -42,7 +42,7 @@ $ docker run --rm -it pottava/mxnet:0.9-notebook ipython
 With Jupyter notebook:
 
 ```
-$ docker run --rm -it -p 80:8888 pottava/mxnet:0.8-notebook
+$ docker run --rm -it -p 80:8888 pottava/mxnet:0.9-notebook
 ```
 
 
