@@ -59,9 +59,9 @@ https://hub.docker.com/r/pottava/tensorflow/tags/
 ### Supported tags and respective `Dockerfile` links
 
 ・latest ([tensorflow/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.0/Dockerfile))  
-・note ([tensorflow/jupyter/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.0/Dockerfile))  
+・note ([tensorflow/jupyter/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.0/Dockerfile))  
 ・1.0 ([tensorflow/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.0/Dockerfile))  
-・1.0-note ([tensorflow/jupyter/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.0/Dockerfile))  
+・1.0-note ([tensorflow/jupyter/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.0/Dockerfile))  
 ・0.12 ([tensorflow/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/0.x/Dockerfile))  
 
 ### Usage

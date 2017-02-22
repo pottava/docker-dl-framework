@@ -1,7 +1,7 @@
-# TensorFlow v0.12 with Jupyter notebook
+# TensorFlow v1.0 with Jupyter notebook
 #
-# docker run --rm -it pottava/tensorflow:0.12-notebook ipython
-# docker run --rm -it -p 80:8888 pottava/tensorflow:0.12-notebook
+# docker run --rm -it pottava/tensorflow:1.0-note ipython
+# docker run --rm -it -p 80:8888 pottava/tensorflow:1.0-note
 
 FROM pottava/tensorflow:1.0
 
