@@ -58,9 +58,11 @@ https://hub.docker.com/r/pottava/tensorflow/tags/
 
 ### Supported tags and respective `Dockerfile` links
 
-・latest ([tensorflow/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/0.x/Dockerfile))  
+・latest ([tensorflow/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.0/Dockerfile))  
+・note ([tensorflow/jupyter/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.0/Dockerfile))  
+・1.0 ([tensorflow/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.0/Dockerfile))  
+・1.0-note ([tensorflow/jupyter/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.0/Dockerfile))  
 ・0.12 ([tensorflow/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/0.x/Dockerfile))  
-・0.12-notebook ([tensorflow/jupyter/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.0/Dockerfile))  
 
 ### Usage
 
@@ -74,17 +76,17 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 >>> import tensorflow
 >>> print(tensorflow.__version__)
-0.12.1
+1.0.0
 ```
 
 With iPython:
 
 ```
-$ docker run --rm -it pottava/tensorflow:0.12-notebook ipython
+$ docker run --rm -it pottava/tensorflow:note ipython
 ```
 
 With Jupyter notebook:
 
 ```
-$ docker run --rm -it -p 80:8888 pottava/tensorflow:0.12-notebook
+$ docker run --rm -it -p 80:8888 pottava/tensorflow:note
 ```
