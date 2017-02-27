@@ -15,7 +15,6 @@ https://hub.docker.com/r/pottava/mxnet/tags/
 
 ・latest ([mxnet/versions/0.9/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.9/Dockerfile))  
 ・0.9 ([mxnet/versions/0.9/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.9/Dockerfile))  
-・0.9-notebook ([mxnet/jupyter/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/jupyter/versions/1.0/Dockerfile))  
 ・0.8 ([mxnet/versions/0.8/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.8/Dockerfile))  
 
 ### Usage
@@ -23,26 +22,26 @@ https://hub.docker.com/r/pottava/mxnet/tags/
 Using the Python default interpreter:
 
 ```
-$ docker run --rm -it pottava/mxnet
-Python 2.7.6 (default, Oct 26 2016, 20:30:19)
-[GCC 4.8.4] on linux2
+$ docker run --rm -it pottava/mxnet python
+Python 2.7.9 (default, Jun 29 2016, 13:08:31)
+[GCC 4.9.2] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 >>> import mxnet
 >>> print(mxnet.__version__)
-0.8.0
+0.9.3
 ```
 
 With iPython:
 
 ```
-$ docker run --rm -it pottava/mxnet:0.9-notebook ipython
+$ docker run --rm -it pottava/mxnet ipython
 ```
 
 With Jupyter notebook:
 
 ```
-$ docker run --rm -it -p 80:8888 pottava/mxnet:0.9-notebook
+$ docker run --rm -it -p 80:8888 pottava/mxnet
 ```
 
 

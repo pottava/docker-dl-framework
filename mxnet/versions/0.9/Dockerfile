@@ -1,18 +1,20 @@
 # MXNet v0.9
 #
-# docker run --rm -it pottava/mxnet:0.9
 # docker run --rm pottava/mxnet:0.9 python -c 'import mxnet; print(mxnet.__version__)'
+# docker run --rm -it pottava/mxnet:0.9 ipython
+# docker run --rm -it -p 80:8888 pottava/mxnet:0.9
 
 FROM debian:jessie-slim
 
 ENV MXNET_VERSION=v0.9.3 \
+    JUPYTER_VERSION=1.0.0 \
     PYTHONPATH=/mxnet/python \
     S6_VERSION=v1.19.1.1 \
     S6_LOGGING=1
 
 RUN BUILD_PACKAGES="build-essential git curl libopenblas-dev" \
-    && apt-get update -y && apt-get autoremove -y \
-    && apt-get install -y $BUILD_PACKAGES \
+    && apt-get update && apt-get autoremove -y \
+    && apt-get install -y $BUILD_PACKAGES python-dev graphviz \
 
     # Install s6-overlay to execute initialization scripts
     && S6_DL=https://github.com/just-containers/s6-overlay/releases/download \
@@ -33,8 +35,15 @@ RUN BUILD_PACKAGES="build-essential git curl libopenblas-dev" \
     && echo "USE_BLAS=openblas" >> config.mk \
     && make -j$(nproc) \
 
+    # Install Jupyter
+    && curl --location --silent --show-error \
+        https://bootstrap.pypa.io/get-pip.py | python \
+    && pip install "jupyter == ${JUPYTER_VERSION}" \
+
+    # Minimum requirements @see http://mxnet.io/get_started/setup.html
+    && pip install graphviz \
+
     # Clean up
-    && find /usr -depth -type f -name "*.a" -exec rm -f {} \; \
     && find /mxnet -maxdepth 1 -type d -name "[^lp]*" ! -path /mxnet -exec rm -rf {} \; \
     && find /mxnet -maxdepth 1 -type f -name "[^lp]*" -exec rm -rf {} \; \
     && find / -depth -type d -name tests -exec rm -rf {} \; \
@@ -44,5 +53,7 @@ RUN BUILD_PACKAGES="build-essential git curl libopenblas-dev" \
     && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* \
         /${S6_TAR} /mxnet/lib/libmxnet.a
 
+WORKDIR /root/notebook
+
 ENTRYPOINT ["/init"]
-CMD ["python"]
+CMD ["jupyter", "notebook", "--no-browser", "--port=8888", "--ip=0.0.0.0"]
