@@ -3,14 +3,14 @@
 # docker run --rm -it pottava/mxnet:0.9
 # docker run --rm pottava/mxnet:0.9 python -c 'import mxnet; print(mxnet.__version__)'
 
-FROM ubuntu:14.04
+FROM debian:jessie-slim
 
 ENV MXNET_VERSION=v0.9.3 \
     PYTHONPATH=/mxnet/python \
     S6_VERSION=v1.19.1.1 \
     S6_LOGGING=1
 
-RUN BUILD_PACKAGES="build-essential git curl" \
+RUN BUILD_PACKAGES="build-essential git curl libopenblas-dev" \
     && apt-get update -y && apt-get autoremove -y \
     && apt-get install -y $BUILD_PACKAGES \
 
@@ -23,7 +23,7 @@ RUN BUILD_PACKAGES="build-essential git curl" \
     && echo 'ln /dev/null /dev/raw1394' >> /etc/cont-init.d/01-link-devnull \
 
     # Install necessary packages
-    && apt-get install -y libopenblas-dev libopencv-dev python-opencv python-numpy \
+    && apt-get install -y libopencv-dev python-opencv python-numpy \
 
     # Install MXNet Core without CUDA
     && git clone --branch ${MXNET_VERSION} --depth 1 --recursive \
@@ -34,11 +34,15 @@ RUN BUILD_PACKAGES="build-essential git curl" \
     && make -j$(nproc) \
 
     # Clean up
+    && find /usr -depth -type f -name "*.a" -exec rm -f {} \; \
+    && find /mxnet -maxdepth 1 -type d -name "[^lp]*" ! -path /mxnet -exec rm -rf {} \; \
+    && find /mxnet -maxdepth 1 -type f -name "[^lp]*" -exec rm -rf {} \; \
     && find / -depth -type d -name tests -exec rm -rf {} \; \
     && find / -depth -type d -name test -exec rm -rf {} \; \
     && find / -depth -type d -name \__pycache__ -exec rm -rf {} \; \
-    && apt-get remove --purge -y $BUILD_PACKAGES \
-    && rm -rf /var/lib/apt/lists/* ${S6_TAR}
+    && apt-get purge -y --auto-remove $BUILD_PACKAGES \
+    && rm -rf /var/cache/apt/archives/* /var/lib/apt/lists/* \
+        /${S6_TAR} /mxnet/lib/libmxnet.a
 
 ENTRYPOINT ["/init"]
 CMD ["python"]
