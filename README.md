@@ -57,11 +57,10 @@ https://hub.docker.com/r/pottava/tensorflow/tags/
 
 ### Supported tags and respective `Dockerfile` links
 
-・latest ([tensorflow/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.0/Dockerfile))  
-・note ([tensorflow/jupyter/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.0/Dockerfile))  
-・1.0 ([tensorflow/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.0/Dockerfile))  
-・1.0-note ([tensorflow/jupyter/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.0/Dockerfile))  
-・0.12 ([tensorflow/versions/0.x/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/0.x/Dockerfile))  
+・latest ([tensorflow/versions/1.1/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.1/Dockerfile))  
+・note ([tensorflow/jupyter/versions/1.1/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.1/Dockerfile))  
+・1.1 ([tensorflow/versions/1.1/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.1/Dockerfile))  
+・1.1-note ([tensorflow/jupyter/versions/1.1/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.1/Dockerfile))  
 
 ### Usage
 
@@ -69,13 +68,13 @@ Using the Python default interpreter:
 
 ```
 $ docker run --rm -it pottava/tensorflow
-Python 3.5.2 (default, Dec 22 2016, 10:15:38)
-[GCC 6.2.1 20160822] on linux
+Python 3.6.0 |Continuum Analytics, Inc.| (default, Dec 23 2016, 12:22:00)
+[GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 >>> import tensorflow
 >>> print(tensorflow.__version__)
-1.0.0
+1.1.0
 ```
 
 With iPython:
@@ -88,4 +87,31 @@ With Jupyter notebook:
 
 ```
 $ docker run --rm -it -p 80:8888 pottava/tensorflow:note
+```
+
+
+## Keras with TensorFlow backend
+
+### Supported tags and respective `Dockerfile` links
+
+・latest ([tensorflow/keras/versions/2.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/keras/versions/2.0/Dockerfile))  
+・2.0 ([tensorflow/keras/versions/2.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/keras/versions/2.0/Dockerfile))  
+
+### Usage
+
+```
+$ docker run --rm -it pottava/keras ipython
+Python 3.6.0 |Continuum Analytics, Inc.| (default, Dec 23 2016, 12:22:00)
+Type 'copyright', 'credits' or 'license' for more information
+IPython 6.0.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: import tensorflow
+In [2]: print(tensorflow.__version__)
+1.1.0
+```
+
+With Jupyter notebook:
+
+```
+$ docker run --rm -it -p 80:8888 pottava/keras
 ```
