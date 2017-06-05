@@ -1,8 +1,8 @@
 # Miniconda v4.3
 
-FROM alpine:3.5
+FROM alpine:3.6
 
-ENV CONDA_VERSION=4.3.11 \
+ENV CONDA_VERSION=4.3.14 \
     GLIBC_VERSION=2.25-r0 \
     PATH=/opt/conda/bin:$PATH \
     LANG=C.UTF-8
