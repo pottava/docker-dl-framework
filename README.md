@@ -13,9 +13,9 @@ https://hub.docker.com/r/pottava/mxnet/tags/
 
 ### Supported tags and respective `Dockerfile` links
 
-・latest ([mxnet/versions/0.9/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.9/Dockerfile))  
+・latest ([mxnet/versions/0.10/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.10/Dockerfile))  
+・0.10 ([mxnet/versions/0.10/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.10/Dockerfile))  
 ・0.9 ([mxnet/versions/0.9/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.9/Dockerfile))  
-・0.8 ([mxnet/versions/0.8/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.8/Dockerfile))  
 
 ### Usage
 
