@@ -6,7 +6,7 @@
 
 FROM debian:jessie-slim
 
-ENV MXNET_VERSION=v0.10.0 \
+ENV MXNET_VERSION=0.10.0.post2 \
     JUPYTER_VERSION=1.0.0 \
     PYTHONPATH=/mxnet/python \
     S6_VERSION=v1.19.1.1 \
@@ -29,7 +29,7 @@ RUN BUILD_PACKAGES="build-essential git curl libopenblas-dev" \
 
     # Install MXNet Core without CUDA
     && git clone --branch ${MXNET_VERSION} --depth 1 --recursive \
-        https://github.com/dmlc/mxnet/ \
+        https://github.com/apache/incubator-mxnet/ \
     && cd mxnet \
     && cp make/config.mk . \
     && echo "USE_BLAS=openblas" >> config.mk \
@@ -56,4 +56,4 @@ RUN BUILD_PACKAGES="build-essential git curl libopenblas-dev" \
 WORKDIR /root/notebook
 
 ENTRYPOINT ["/init"]
-CMD ["jupyter", "notebook", "--no-browser", "--port=8888", "--ip=0.0.0.0"]
+CMD ["jupyter", "notebook", "--no-browser", "--port=8888", "--ip=0.0.0.0", "--allow-root"]
