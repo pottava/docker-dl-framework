@@ -30,7 +30,7 @@ RUN BUILD_PACKAGES="build-essential git curl libopenblas-dev" \
     # Install MXNet Core without CUDA
     && git clone --branch ${MXNET_VERSION} --depth 1 --recursive \
         https://github.com/apache/incubator-mxnet/ \
-    && cd mxnet \
+    && cd incubator-mxnet \
     && cp make/config.mk . \
     && echo "USE_BLAS=openblas" >> config.mk \
     && make -j$(nproc) \
