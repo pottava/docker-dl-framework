@@ -5,9 +5,10 @@
 
 FROM pottava/miniconda:4.3
 
-ENV TENSORFLOW_VERSION=1.2.0
+ENV TENSORFLOW_VERSION=1.2.1
 
 RUN apk --no-cache add libstdc++ \
+    && pip install wheel \
 
     # Install TensorFlow
     && pip install --ignore-installed --upgrade "tensorflow == ${TENSORFLOW_VERSION}" \
