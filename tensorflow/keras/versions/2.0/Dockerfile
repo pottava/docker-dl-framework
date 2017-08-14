@@ -5,12 +5,11 @@
 
 FROM pottava/tensorflow:1.2-note
 
-ENV KERAS_VERSION=2.0.5
+ENV KERAS_VERSION=2.0.6
 
 RUN pip install wheel \
 
     # Install Keras
-    && pip install wheel \
     && pip install --ignore-installed --upgrade "keras == ${KERAS_VERSION}" \
 
     # Clean up
