@@ -3,7 +3,7 @@
 # docker run --rm -it pottava/tensorflow:1.3-note ipython
 # docker run --rm -it -p 80:8888 pottava/tensorflow:1.3-note
 
-FROM pottava/tensorflow:1.3.0
+FROM pottava/tensorflow:1.3
 
 ENV JUPYTER_VERSION=1.0.0
 

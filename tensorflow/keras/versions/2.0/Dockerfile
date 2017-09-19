@@ -1,11 +1,11 @@
-# Keras v2.0 with TensorFlow v1.2
+# Keras v2.0 with TensorFlow v1.3
 #
 # docker run --rm -it pottava/keras ipython
 # docker run --rm -it -p 80:8888 pottava/keras
 
-FROM pottava/tensorflow:1.2-note
+FROM pottava/tensorflow:1.3-note
 
-ENV KERAS_VERSION=2.0.6
+ENV KERAS_VERSION=2.0.8
 
 RUN pip install wheel \
 
