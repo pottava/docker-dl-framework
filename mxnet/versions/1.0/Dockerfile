@@ -1,5 +1,5 @@
 # MXNet v1.0
-# docker run --rm pottava/mxnet:1.0 python -c 'import mxnet; print(mxnet.__version__)'
+# docker run --rm pottava/mxnet:1.0 -c 'import mxnet; print(mxnet.__version__)'
 
 FROM debian:stretch-slim
 

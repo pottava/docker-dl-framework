@@ -13,35 +13,35 @@ https://hub.docker.com/r/pottava/mxnet/tags/
 
 ### Supported tags and respective `Dockerfile` links
 
-・latest ([mxnet/versions/0.10/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.10/Dockerfile))  
-・0.10 ([mxnet/versions/0.10/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.10/Dockerfile))  
-・0.9 ([mxnet/versions/0.9/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/0.9/Dockerfile))  
+・latest ([mxnet/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/1.0/Dockerfile))  
+・1.0 ([mxnet/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/versions/1.0/Dockerfile))  
+・1.0-note ([mxnet/versions/1.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/mxnet/jupyter/versions/1.0/Dockerfile))  
 
 ### Usage
 
 Using the Python default interpreter:
 
 ```
-$ docker run --rm -it pottava/mxnet python
-Python 2.7.9 (default, Jun 29 2016, 13:08:31)
-[GCC 4.9.2] on linux2
+$ docker run --rm -it pottava/mxnet:1.0
+Python 2.7.13 (default, Nov 24 2017, 17:33:09)
+[GCC 6.3.0 20170516] on linux2
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 >>> import mxnet
 >>> print(mxnet.__version__)
-0.9.3
+1.0.0
 ```
 
 With iPython:
 
 ```
-$ docker run --rm -it pottava/mxnet ipython
+$ docker run --rm -it pottava/mxnet:1.0-note ipython
 ```
 
 With Jupyter notebook:
 
 ```
-$ docker run --rm -it -p 80:8888 pottava/mxnet
+$ docker run --rm -it -p 80:8888 pottava/mxnet:1.0-note
 ```
 
 
@@ -57,24 +57,23 @@ https://hub.docker.com/r/pottava/tensorflow/tags/
 
 ### Supported tags and respective `Dockerfile` links
 
-・latest ([tensorflow/versions/1.3/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.3/Dockerfile))  
-・note ([tensorflow/jupyter/versions/1.3/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.3/Dockerfile))  
-・1.3 ([tensorflow/versions/1.3/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.3/Dockerfile))  
-・1.3-note ([tensorflow/jupyter/versions/1.3/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.3/Dockerfile))  
+・latest ([tensorflow/versions/1.4/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.4/Dockerfile))  
+・1.4 ([tensorflow/versions/1.4/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/versions/1.4/Dockerfile))  
+・1.4-note ([tensorflow/jupyter/versions/1.4/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/jupyter/versions/1.4/Dockerfile))  
 
 ### Usage
 
 Using the Python default interpreter:
 
 ```
-$ docker run --rm -it pottava/tensorflow
-Python 3.6.0 |Continuum Analytics, Inc.| (default, Dec 23 2016, 12:22:00)
+$ docker run --rm -it pottava/tensorflow:1.4
+Python 3.5.2 |Continuum Analytics, Inc.| (default, Jul  2 2016, 17:53:06)
 [GCC 4.4.7 20120313 (Red Hat 4.4.7-1)] on linux
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 >>> import tensorflow
 >>> print(tensorflow.__version__)
-1.1.0
+1.4.1
 ```
 
 With iPython:
@@ -90,12 +89,13 @@ $ docker run --rm -it -p 80:8888 pottava/tensorflow:note
 ```
 
 
-## Keras with TensorFlow backend
+## Keras
 
 ### Supported tags and respective `Dockerfile` links
 
-・latest ([tensorflow/keras/versions/2.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/keras/versions/2.0/Dockerfile))  
-・2.0 ([tensorflow/keras/versions/2.0/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/keras/versions/2.0/Dockerfile))  
+・latest ([tensorflow/keras/versions/2.1/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/keras/versions/2.1/Dockerfile))  
+・2.1 ([tensorflow/keras/versions/2.1/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/keras/versions/2.1/Dockerfile))  
+・2.1-tensorflow1.4 ([tensorflow/keras/versions/2.1-tf1.4/Dockerfile](https://github.com/pottava/docker-dl-framework/blob/master/tensorflow/keras/versions/2.1-tf1.4/Dockerfile))  
 
 ### Usage
 
