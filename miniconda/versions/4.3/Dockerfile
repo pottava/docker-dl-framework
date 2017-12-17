@@ -2,8 +2,8 @@
 
 FROM alpine:3.6
 
-ENV CONDA_VERSION=4.3.21 \
-    GLIBC_VERSION=2.25-r0 \
+ENV CONDA_VERSION=4.3.30 \
+    GLIBC_VERSION=2.26-r0 \
     PATH=/opt/conda/bin:$PATH \
     LANG=C.UTF-8
 
