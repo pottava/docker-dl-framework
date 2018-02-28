@@ -1,9 +1,9 @@
-# MXNet v1.0 with Jupyter notebook
+# MXNet v1.1 with Jupyter notebook
 #
-# docker run --rm -it pottava/mxnet:1.0-note ipython
-# docker run --rm -it -p 80:8888 pottava/mxnet:1.0-note
+# docker run --rm -it pottava/mxnet:1.1-note ipython
+# docker run --rm -it -p 80:8888 pottava/mxnet:1.1-note
 
-FROM pottava/mxnet:1.0
+FROM pottava/mxnet:1.1
 
 ENV JUPYTER_VERSION=1.0.0
 
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get autoremove -y \
     && rm -rf /root/.cache
 
 # Install tini
-RUN wget -q https://github.com/krallin/tini/releases/download/v0.16.1/tini \
+RUN wget -q https://github.com/krallin/tini/releases/download/v0.17.0/tini \
     && chmod +x /tini
 
 WORKDIR /root/notebook
