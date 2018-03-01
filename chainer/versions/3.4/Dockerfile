@@ -1,7 +1,7 @@
 # Chainer v3.4
 # docker run --rm pottava/chainer:3.4 -c 'import chainer; print(chainer.__version__)'
 
-FROM pottava/miniconda:4.3
+FROM pottava/miniconda:4.2
 
 ENV CHAINER_VERSION=3.4.0
 
