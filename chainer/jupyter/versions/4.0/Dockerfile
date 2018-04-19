@@ -7,7 +7,7 @@ FROM pottava/chainer:4.0
 
 ENV JUPYTER_VERSION=1.0.0
 
-RUN apk --no-cache add tini \
+RUN apk --no-cache add tini bash \
     && pip install "jupyter == ${JUPYTER_VERSION}" \
     && pip install backcall \
     && conda install -y -c conda-forge jupyter_contrib_nbextensions \
