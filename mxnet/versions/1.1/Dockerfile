@@ -3,11 +3,11 @@
 
 FROM debian:stretch-slim
 
-ENV MXNET_VERSION=1.1.0
+ENV MXNET_VERSION=1.1.0.post0
 
 # Install MXNet
 RUN apt-get update && apt-get autoremove -y \
-    && apt-get install -y python gcc wget graphviz \
+    && apt-get install -y python python-dev gcc wget graphviz \
     && apt-get install -y libopenblas-dev libopencv-dev python-opencv python-numpy \
     && wget -q https://bootstrap.pypa.io/get-pip.py \
     && python get-pip.py \

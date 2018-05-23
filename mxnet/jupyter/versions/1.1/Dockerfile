@@ -9,7 +9,6 @@ ENV JUPYTER_VERSION=1.0.0
 
 # Install Jupyter
 RUN apt-get update && apt-get autoremove -y \
-    && apt-get install -y python-dev \
     && pip install jupyter==${JUPYTER_VERSION} \
     && find / -depth -type d -name tests -exec rm -rf {} \; \
     && find / -depth -type d -name test -exec rm -rf {} \; \
@@ -17,10 +16,11 @@ RUN apt-get update && apt-get autoremove -y \
     && rm -rf /root/.cache
 
 # Install tini
-RUN wget -q https://github.com/krallin/tini/releases/download/v0.17.0/tini \
+RUN wget -q https://github.com/krallin/tini/releases/download/v0.18.0/tini \
     && chmod +x /tini
 
 WORKDIR /root/notebook
+ADD jupyter_notebook_config.py /root/.jupyter/
 
 ENTRYPOINT ["/tini", "--"]
-CMD ["jupyter", "notebook", "--no-browser", "--port=8888", "--ip=0.0.0.0", "--allow-root"]
+CMD ["jupyter", "notebook"]
