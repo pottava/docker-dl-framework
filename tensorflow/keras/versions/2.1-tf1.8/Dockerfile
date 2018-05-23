@@ -9,6 +9,5 @@ ENV KERAS_VERSION=2.1.6
 
 RUN pip install --ignore-installed --upgrade "keras == ${KERAS_VERSION}" \
     && find / -depth -type d -name tests -exec rm -rf {} \; \
-    && find / -depth -type d -name test -exec rm -rf {} \; \
     && find / -depth -type d -name \__pycache__ -exec rm -rf {} \; \
     && rm -rf /root/.cache

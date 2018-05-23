@@ -10,7 +10,6 @@ ENV JUPYTER_VERSION=1.0.0
 RUN apk --no-cache add tini \
     && pip install "jupyter == ${JUPYTER_VERSION}" \
     && find / -type d -name tests -depth -exec rm -rf {} \; \
-    && find / -type d -name test -depth -exec rm -rf {} \; \
     && find / -type d -name \__pycache__ -depth -exec rm -rf {} \; \
     && rm -rf /root/.cache
 
